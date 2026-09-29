@@ -1,9 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const Database = require("better-sqlite3");
 const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+app.use(
+  cors({
+    origin: "chrome-extension://hblhlabfiekdhncmjbaeiefcmfdamnch",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  }),
+);
 
 app.use(express.json());
 
